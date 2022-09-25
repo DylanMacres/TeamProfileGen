@@ -88,6 +88,7 @@ function managerHtml () {
             <p> Email:<a href="Email to:" ${manager.getEmail()}"${manager.getEmail()}</p></a>
             <p> Office Number: ${manager.getOfficeNum()}</p>
             </div>
+            </section>
          </div>   
             `;
             fs.writeFile("./dist/final.html", managerCard, (err)=> 
@@ -121,6 +122,15 @@ function managerHtml () {
   ]).then (response => {
     const intern = new Intern (response.name, response.ID, response.email, response.school );
     employees.push(intern);
+    const internCard = `<div class="col-2 boxes card">
+    <h4 class="card-header" id="day1">${intern.getName()}</h4>
+    <h5>${intern.getRole()}</h5>
+  </div>
+  <div class="cardInfo">
+  <p> ID: ${intern.getID()}</p>
+  <p> Email:<a href="Email to:" ${intern.getEmail()}"${intern.getEmail()}</p></a>
+  <p> Office Number: ${intern.getSchool()}</p>
+  </div>`
     whatsNext();
  
   })
@@ -130,7 +140,7 @@ function managerHtml () {
   
     {
     type: 'input',
-    message: "What is your Engineer's name?",
+    message: "What is your Engineer'0s name?",
     name:'name'
 
   },
