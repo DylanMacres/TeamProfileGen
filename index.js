@@ -13,6 +13,8 @@ const fs = require("fs");
 const jest = require("jest");
 const { resolve } = require("path");
 const { start } = require("repl");
+const OUTPUT_DIR = path.resolve(__dirname, "output");
+const outputPath =path.join(OUTPUT_DIR, "profile.html")
 
 // Array  for the team to be pushed to 
 let employees = [];
