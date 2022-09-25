@@ -167,6 +167,15 @@ function managerHtml () {
   ]).then(response => {
     const engineer = new Engineer(response.name, response.ID, response.email, response.github);
     employees.push(engineer);
+    const engineerCard = `<div class="col-2 boxes card">
+    <h4 class="card-header" id="day1">${engineer.getName()}</h4>
+    <h5>${engineer.getRole()}</h5>
+  </div>
+  <div class="cardInfo">
+  <p> ID: ${engineer.getID()}</p>
+  <p> Email:<a href="Email to:" ${engineer.getEmail()}"${engineer.getEmail()}</p></a>
+  <p> Office Number: ${engineer.github()}</p>
+  </div>`
     whatsNext();
   })
 };
