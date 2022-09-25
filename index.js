@@ -17,7 +17,7 @@ const { start } = require("repl");
 // Array  for the team to be pushed to 
 let employees = [];
 
-function empManger (){
+function managerHtml () {
   inquirer.prompt([
     {
       type: "input",
@@ -39,13 +39,17 @@ function empManger (){
       message: "What is the manager's office number?",
       name: "officeNumber",
     },
-  ]).then(results => {
-    const manager = new Manager (results.managerName, results.managerID, results.managerEmail, results.officeNumber)
+  ]).then(response => {
+    const manager = new Manager (response.managerName, response.managerID, response.managerEmail, response.officeNumber)
     employees.push(manager);
-    start();
+
+    whatsNext();
+  // const managerCard = ``
   })
 }
-  Intern: [
+
+  function empIntern() {
+      inquirer.prompt([
     {
       type: "input",
       message: "What is your intern's name?",
@@ -66,8 +70,17 @@ function empManger (){
       message: "What school is/did your intern attend?",
       name: "internSchool",
     },
-  ],
-  Engineer: [{
+  ]).then (response => {
+    const intern = new Intern (response.internName, response.internId, response.internEmail, response.internSchool );
+    employees.push(intern);
+    whatsNext();
+ 
+  })
+}
+  function empEngineer(){
+  inquirer.prompt ([
+  
+    {
     type: 'input',
     message: "What is your Engineer's name?",
     name:'engineerName'
@@ -93,82 +106,36 @@ function empManger (){
 
     }
 
-  ]
+  ]).then(response => {
+    const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGitHub);
+    employees.push(engineer);
+    whatsNext();
+  })
 };
 
 
-const newEmployee = {
-    type: "list",
-    message: "Do you want to add another employee?",
-    name: "newEmployee",
-    choices: ["Yes","No"]
-}
 
-
-// inquirer.prompt(questions)
-// const questions = () => {
-//   return inquirer.prompt([
-//     {
-//       type: "list",
-//       name: "title ",
-//       message:"What is the employee's title?",
-//       choices: ["Manager", "Engineer", "Intern"]
-
-
-//     },
-
+    function whatsNext() {
+      inquirer
+        .prompt([
+          {
+            type: 'list',
+            message:'What would you like to do next?',
+            choices:["Add Engineer", "Add Intern", "Finish"],
+            name:'choicesList',
+          }
+        ]).then((response) => {
+          if(response.choicesList == "Add Engineer"){
+            this.empEngineer();
+    } else if(response.choicesList == "Add Intern"){
+      this.empIntern();
     
+    }else {
+      this.noMore();
+    }
     
-//     {
-//     type: 'input',
-//     name: 'employeeName',
-//     message: "What is the employee's name?",
-//     },    
-//     {
-//       type: 'input',
-//       name: 'employeeEmail',
-//       message: "What is the employee's Email" },
-//       {
-//         type: "input",
-//         name:"internSchool",
-//         message:"What is the name of the school for the Intern?",
-//         when: (response) => response.title == 'Intern',
-
-//       },
-
-//       {
-//         type: "input",
-//         when: (response) => response.title == "Engineer",
-//         message: "What is your Github username?",
-//         name: "engineerGithub",
-//       },
-//       {
-//         type:"input",
-//         when: (response) => response.title == "Manager",
-//         message: "What is your office number?",
-//         name: "managerOfficNum",
-
-//       },
-
-//   ])
-// }
-
-const addAnother = {
-  type: 'list',
-  message: "Would you like to add another employee, and if so, which job title?",
-  choices: ["Engineer", "Intern", "No more employees to add"],
-  name:"addingMore"
-}
-
-function addEmployee () {
-    inquirer.prompt ([{
-        type:'list',
-        message:"Choose the employee's role",
-        name:'employeeRole',
-        choices:['Manager', 'Intern', 'Engineer' ]
-    }]).then((choices) => {
-        if(choices.employeeRole === "Manager"){
-            managerCount++
-        }
-    })
-}
+        })
+    }
+function noMore(){
+  fs.writeFileSync(outputPath, render(employees))
+};
