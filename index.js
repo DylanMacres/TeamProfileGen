@@ -44,9 +44,55 @@ function managerHtml () {
   ]).then(response => {
     const manager = new Manager (response.name, response.ID, response.email, response.officeNumber)
     employees.push(manager);
+    const startPage = fs.writeFile("./dist/final.html", )
 
-    whatsNext();
-  // const managerCard = ``
+
+  const managerCard = `<!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Team Profile Generator</title>
+  </head>
+  <body>
+  
+      <header class="text-center custom header">
+          <h3>Meet the Team!</h1>
+      
+      </header>
+  
+      <div class="container-fluid"></div>
+      <section class="row"></section>
+  
+  <form>
+  <div class= "col-sm-3">
+    
+  </div>
+  </form>
+  <div class="col-12 col-md-10">>
+  </div>
+  <div class=" text-center">
+      <h3>hello world!</h3></div>
+      
+      
+      <section class="container-fluid  ">
+          <div class="row">
+            <div class="col-2 boxes card">
+              <h4 class="card-header" id="day1">${manager.getName()}</h4>
+              <h5>${manager.getRole()}</h5>
+            </div>
+            <div class="cardInfo">
+            <p> ID: ${manager.getID()}</p>
+            <p> Email:<a href="Email to:" ${manager.getEmail()}"${manager.getEmail()}</p></a>
+            <p> Office Number: ${manager.getOfficeNum()}</p>
+            </div>
+         </div>   
+            `;
+            fs.writeFile("./dist/final.html", managerCard, (err)=> 
+            err ? console.error(err): console.log('IT WORKED!'))
+            whatsNext();
   })
 }
 
