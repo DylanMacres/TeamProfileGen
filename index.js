@@ -24,17 +24,17 @@ function managerHtml () {
     {
       type: "input",
       message: "What is your manager's name?",
-      name: "managerName",
+      name:'name',
     },
     {
       type: "input",
       message: "What is your manager's id number",
-      name: "managerId",
+      name: "ID",
     },
     {
       type: "input",
       message: "What is your manager's email address?",
-      name: "managerEmail",
+      name: "email",
     },
     {
       type: "input",
@@ -42,7 +42,7 @@ function managerHtml () {
       name: "officeNumber",
     },
   ]).then(response => {
-    const manager = new Manager (response.managerName, response.managerID, response.managerEmail, response.officeNumber)
+    const manager = new Manager (response.name, response.ID, response.email, response.officeNumber)
     employees.push(manager);
 
     whatsNext();
@@ -55,25 +55,25 @@ function managerHtml () {
     {
       type: "input",
       message: "What is your intern's name?",
-      name: "internName",
+      name: "name",
     },
     {
       type: "input",
       message: "What is your intern's id number",
-      name: "internId",
+      name: "ID",
     },
     {
       type: "input",
       message: "What is your intern's email address?",
-      name: "interEmail",
+      name: "email",
     },
     {
       type: "input",
       message: "What school is/did your intern attend?",
-      name: "internSchool",
+      name: "school",
     },
   ]).then (response => {
-    const intern = new Intern (response.internName, response.internId, response.internEmail, response.internSchool );
+    const intern = new Intern (response.name, response.ID, response.email, response.school );
     employees.push(intern);
     whatsNext();
  
@@ -85,31 +85,31 @@ function managerHtml () {
     {
     type: 'input',
     message: "What is your Engineer's name?",
-    name:'engineerName'
+    name:'name'
 
   },
     {
       type: 'input',
       message: "What is the engineer's id?",
-      name:'engineerID'
+      name:'ID'
     },
 
     {
       name: 'input',
       message: "What is the engineer's email?",
-      name: 'engineerEmail'
+      name: 'email'
 
     },
 
     {
       type: 'input',
       message: "What is your engineer's github username?",
-      name:'engineerGitHub'
+      name:'github'
 
     }
 
   ]).then(response => {
-    const engineer = new Engineer(response.engineerName, response.engineerID, response.engineerEmail, response.engineerGitHub);
+    const engineer = new Engineer(response.name, response.ID, response.email, response.github);
     employees.push(engineer);
     whatsNext();
   })
