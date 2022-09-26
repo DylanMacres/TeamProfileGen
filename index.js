@@ -90,7 +90,7 @@ let employees = [];
             <div class="cardInfo">
             <p> ID: ${manager.getID()}</p>
             <p> Email:<a href="Email to:" ${manager.getEmail()}"${manager.getEmail()}</p></a>
-            <p> Office Number: ${manager.getEmail()}</p>
+            <p> Office Number: ${manager.getOfficeNum()}</p>
             </div>
             </section>
          </div>   
@@ -182,7 +182,7 @@ let employees = [];
   <div class="cardInfo">
   <p> ID: ${engineer.getID()}</p>
   <p> Email:<a href="Email to:" ${engineer.getEmail()}"${engineer.getEmail()}</p></a>
-  <p> Office Number: ${engineer.getID()}</p>
+  <p> Office Number: ${engineer.getGithub()}</p>
   </div>`
     whatsNext();
   })
