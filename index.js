@@ -19,8 +19,8 @@ const outputPath =path.join(OUTPUT_DIR, "profile.html")
 // Array  for the team to be pushed to 
 let employees = [];
 
-function managerHtml () {
-  inquirer.prompt([
+
+  let questionsManager = ([
     {
       type: "input",
       message: "What is your manager's name?",
@@ -41,10 +41,14 @@ function managerHtml () {
       message: "What is the manager's office number?",
       name: "officeNumber",
     },
-  ]).then(response => {
+  ])
+  
+  function managerHtml (){
+    inquirer.prompt(questionsManager)
+  .then(response => {
     const manager = new Manager (response.name, response.ID, response.email, response.officeNumber)
     employees.push(manager);
-    const startPage = fs.writeFile("./dist/final.html", )
+    // const startPage = fs.writeFile("./dist/final.html", )
 
 
   const managerCard = `<!DOCTYPE html>
@@ -86,19 +90,18 @@ function managerHtml () {
             <div class="cardInfo">
             <p> ID: ${manager.getID()}</p>
             <p> Email:<a href="Email to:" ${manager.getEmail()}"${manager.getEmail()}</p></a>
-            <p> Office Number: ${manager.getOfficeNum()}</p>
+            <p> Office Number: ${manager.getEmail()}</p>
             </div>
             </section>
          </div>   
             `;
-            fs.writeFile("./dist/final.html", managerCard, (err)=> 
-            err ? console.error(err): console.log('IT WORKED!'))
+            // fs.writeFile("./dist/final.html", managerCard, (err)=> 
+            // err ? console.error(err): console.log('IT WORKED!'))
             whatsNext();
   })
 }
 
-  function empIntern() {
-      inquirer.prompt([
+  let internQuestions = ([
     {
       type: "input",
       message: "What is your intern's name?",
@@ -119,7 +122,10 @@ function managerHtml () {
       message: "What school is/did your intern attend?",
       name: "school",
     },
-  ]).then (response => {
+  ])
+  function empIntern() {
+    inquirer.prompt(internQuestions)
+  .then (response => {
     const intern = new Intern (response.name, response.ID, response.email, response.school );
     employees.push(intern);
     const internCard = `<div class="col-2 boxes card">
@@ -135,8 +141,7 @@ function managerHtml () {
  
   })
 }
-  function empEngineer(){
-  inquirer.prompt ([
+  let engineerQuestions = ([
   
     {
     type: 'input',
@@ -164,7 +169,10 @@ function managerHtml () {
 
     }
 
-  ]).then(response => {
+  ])
+  function empEngineer(){
+    inquirer.prompt(engineerQuestions)
+  .then(response => {
     const engineer = new Engineer(response.name, response.ID, response.email, response.github);
     employees.push(engineer);
     const engineerCard = `<div class="col-2 boxes card">
@@ -174,7 +182,7 @@ function managerHtml () {
   <div class="cardInfo">
   <p> ID: ${engineer.getID()}</p>
   <p> Email:<a href="Email to:" ${engineer.getEmail()}"${engineer.getEmail()}</p></a>
-  <p> Office Number: ${engineer.github()}</p>
+  <p> Office Number: ${engineer.getID()}</p>
   </div>`
     whatsNext();
   })
@@ -193,16 +201,20 @@ function managerHtml () {
           }
         ]).then((response) => {
           if(response.choicesList == "Add Engineer"){
-            this.empEngineer();
+            empEngineer();
     } else if(response.choicesList == "Add Intern"){
-      this.empIntern();
+      empIntern();
     
     }else {
-      this.noMore();
+      noMore();
     }
     
         })
     }
+
+managerHtml();
+// empIntern();
+// empEngineer();
 function noMore(){
-  fs.writeFileSync(outputPath, render(employees))
-};
+  return;
+}
