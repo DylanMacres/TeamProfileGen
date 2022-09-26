@@ -4,7 +4,7 @@ const Employee = require("./lib/employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/intern");
 const Manager = require("./lib/Manager");
-
+// const indexfile = 
 //adding the dependicies //
 
 const inquirer = require("inquirer");
@@ -95,6 +95,11 @@ let employees = [];
             </section>
          </div>   
             `;
+            fs.writeFile("./dist/final.html", managerCard,function(err){
+              if(err){
+                console.log('not working')
+              }
+            } )
             // fs.writeFile("./dist/final.html", managerCard, (err)=> 
             // err ? console.error(err): console.log('IT WORKED!'))
             whatsNext();
@@ -137,6 +142,11 @@ let employees = [];
   <p> Email:<a href="Email to:" ${intern.getEmail()}"${intern.getEmail()}</p></a>
   <p> Office Number: ${intern.getSchool()}</p>
   </div>`
+  fs.writeFile("./dist/final.html", internCard,function(err){
+    if(err){
+      console.log('not working')
+    }
+  } )
     whatsNext();
  
   })
@@ -184,6 +194,11 @@ let employees = [];
   <p> Email:<a href="Email to:" ${engineer.getEmail()}"${engineer.getEmail()}</p></a>
   <p> Office Number: ${engineer.getGithub()}</p>
   </div>`
+  fs.writeFile("./dist/final.html", engineerCard,function(err){
+    if(err){
+      console.log('not working')
+    }
+  } )
     whatsNext();
   })
 };
