@@ -1,0 +1,12 @@
+*{
+    background-color: beige;
+    padding: 5px;
+    color: black;
+    margin: 3px;
+    text-align: center;
+}
+
+.card {
+    justify-content: right;
+    width: fit-content;
+}
