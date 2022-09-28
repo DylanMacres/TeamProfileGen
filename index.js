@@ -37,7 +37,7 @@ let questionsManager = [
   {
     type: "input",
     message: "What is the manager's office number?",
-    name: "officeNumber",
+    name: "officeNum",
   },
 ];
 
@@ -47,7 +47,7 @@ function managerHtml() {
       response.name,
       response.ID,
       response.email,
-      response.officeNumber
+      response.officeNum
     );
    
 
