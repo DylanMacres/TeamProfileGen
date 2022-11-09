@@ -1,9 +1,9 @@
 //Adding the classes //
 
-const Employee = require("./lib/employee");
-const Engineer = require("./lib/Engineer");
-const Intern = require("./lib/intern");
-const Manager = require("./lib/Manager");
+const Employee = require("../lib/employee");
+const Engineer = require("../lib/Engineer");
+const Intern = require("../lib/intern");
+const Manager = require("../lib/Manager");
 // const indexfile =
 //adding the dependicies //
 
