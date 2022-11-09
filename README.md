@@ -13,8 +13,6 @@ SO THAT I have quick access to their emails and GitHub profiles
   4. [Contributions](#credits)
   5. [GitHub](#github)
   6. [Email](#email)
-  7. [Licenses](#license)
-
 
 
   ## Installation 
@@ -32,4 +30,4 @@ SO THAT I have quick access to their emails and GitHub profiles
   ## E-Mail
     macresdylan@gmail.com
 
-  ## License
+
